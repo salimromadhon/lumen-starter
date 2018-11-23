@@ -29,4 +29,14 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     protected $hidden = [
         'password', 'remember_token', 'api_token',
     ];
+
+    public function todos()
+    {
+        return $this->hasMany('App\Todo');
+    }
+
+    public function todo_items()
+    {
+        return $this->hasMany('App\TodoItem');
+    }
 }

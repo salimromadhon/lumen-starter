@@ -35,5 +35,13 @@ class AuthServiceProvider extends ServiceProvider
                 return User::where('api_token', $request->input('api_token'))->first();
             }
         });
+
+        Gate::define('manage-todo', function ($user, $todo) {
+            return $user->id === $todo->user_id;
+        });
+
+        Gate::define('manage-todo-item', function ($user, $todoItem) {
+            return $user->id === $todoItem->user_id;
+        });
     }
 }
