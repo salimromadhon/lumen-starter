@@ -47,7 +47,7 @@ class TodoController extends Controller
 
         $todo = Todo::find($id);
 
-        if (Gate::allows('manage-todo', $todo))
+        if ($todo != null and Gate::allows('manage-todo', $todo))
         {
             $input = $request->all();
 
@@ -74,7 +74,7 @@ class TodoController extends Controller
 
         $todo = Todo::find($id);
 
-        if (Gate::allows('manage-todo', $todo))
+        if ($todo != null and Gate::allows('manage-todo', $todo))
         {
             $todo->delete();
 

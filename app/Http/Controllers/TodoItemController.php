@@ -41,7 +41,7 @@ class TodoItemController extends Controller
 
         $todoItem = TodoItem::find($id);
 
-        if (Gate::allows('manage-todo-item', $todoItem))
+        if ($todoItem != null and Gate::allows('manage-todo-item', $todoItem))
         {
             $input = $request->all();
 
@@ -68,7 +68,7 @@ class TodoItemController extends Controller
 
         $todoItem = TodoItem::find($id);
 
-        if (Gate::allows('manage-todo-item', $todoItem))
+        if ($todoItem != null and Gate::allows('manage-todo-item', $todoItem))
         {
             $todoItem->delete();
 
